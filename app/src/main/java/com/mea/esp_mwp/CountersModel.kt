@@ -6,7 +6,8 @@ import java.io.IOException
 
 class CountersModel : Countersint {
     private val client = OkHttpClient() //Создаем клиента
-//    private fun post(post: String) {   // Отправка данных с интернета (стринга)
+
+    //    private fun post(post: String) {   // Отправка данных с интернета (стринга)
 //        Thread {  //Открываем второстепенный поток
 //            var request = Request.Builder().url("http://192.168.1.133/$post").build()
 //            //Формироване запроса, вытягиваем ip + в конце дописываем сам запрос
@@ -23,26 +24,20 @@ class CountersModel : Countersint {
 //            }
 //        }.start() //Старт второстепенного потока
 //    }
-override fun gPost(post: String)  {
+    override fun gPost() {
 //    fun post(post: String) {   // Отправка данных с интернета (стринга)
         Thread {  //Открываем второстепенный поток
-            try { var request = Request.Builder().url("http://192.168.1.133/$post").build()
-
-
-                 client.newCall(request).execute()
-                val slovo = "dsfsdf"
-
-
-
-            //Создаем переменную которая будет отправлять данные в esp
-
+            try {
+                var request = Request.Builder().url("http://192.168.1.133/led2").build()
+                client.newCall(request).execute()
             } catch (i: IOException) {
             }
-        }.start() //Старт второстепенного потока
-
+        }.start()
     }
-
 }
+//Старт второстепенного потока
+  //  }
+
 
 //    private val counter = mutableListOf(1, 2, 3)
 //    override fun getCounter(index: Int): Int {

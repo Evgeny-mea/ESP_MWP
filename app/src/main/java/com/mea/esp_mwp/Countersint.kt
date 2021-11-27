@@ -7,6 +7,6 @@ interface Countersint {
 
   //    fun getCounter (index: Int): Int
 //    fun upCounter (index: Int): Int
-  fun gPost (gPost: String)
+  fun gPost ()
 
 }
