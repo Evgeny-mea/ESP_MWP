@@ -8,19 +8,19 @@ class MainPresenter(
 
     fun counterClick (id: Int) = when(id) {
         R.id.btn_led_1 -> {
-            model.gPost()
+            model.gPost("led1")
 //            val nextValue = model.upCounter(0)
 //            view.outData (R.id.textView, nextValue.toString())
         }
         R.id.btn_led_2 -> {
-            model.gPost()
+            model.gPost("led2")
 //            val nextValue = model.upCounter(1)
 //            view.outData (R.id.textView, nextValue.toString())
         }
         R.id.btn_led_3 -> {
-            model.gPost()
-//            val nextValue = model.upCounter(2)
-//            view.outData (R.id.textView, nextValue.toString())
+            model.gPost("temperature")
+            val nextValue = model.temperature
+            view.outData (R.id.textView, nextValue)
         }
         else -> {}
     }
