@@ -15,7 +15,7 @@ class CountersModel : Countersint {
                 var request = Request.Builder().url("http://192.168.1.133/$post").build()
                 var response = client.newCall(request).execute()
                 if (response.isSuccessful) {
-                    temperature = response.body().toString()
+                    temperature = response.body()!!.string()
                 }
             } catch (i: IOException) {
             }
