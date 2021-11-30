@@ -5,7 +5,45 @@ import okhttp3.Request
 import java.io.IOException
 
 class CountersModel : Countersint {
+
     private val client = OkHttpClient() //Создаем клиента
+    var temperature = "0"
+
+    override fun gPost(post: String): String {
+        Thread {
+            try {
+                var request = Request.Builder().url("http://192.168.1.133/$post").build()
+                var response = client.newCall(request).execute()
+                if (response.isSuccessful) {
+                    temperature = response.body()!!.string()
+                }
+            } catch (i: IOException) {
+            }
+        }.start()
+        return temperature
+    }
+}
+
+
+//Старт второстепенного потока
+//  }
+
+
+//    private val counter = mutableListOf(1, 2, 3)
+//    override fun getCounter(index: Int): Int {
+//        return counter[index]
+//    }
+//    override fun upCounter(index: Int): Int {
+//        counter[index]++
+//        return getCounter(index)
+//    }
+
+
+//    fun set(index: Int, value: Int) {
+//        counter[index] = value
+//    }
+
+
 //    private fun post(post: String) {   // Отправка данных с интернета (стринга)
 //        Thread {  //Открываем второстепенный поток
 //            var request = Request.Builder().url("http://192.168.1.133/$post").build()
@@ -23,40 +61,3 @@ class CountersModel : Countersint {
 //            }
 //        }.start() //Старт второстепенного потока
 //    }
-override fun gPost(post: String)  {
-//    fun post(post: String) {   // Отправка данных с интернета (стринга)
-        Thread {  //Открываем второстепенный поток
-            try { var request = Request.Builder().url("http://192.168.1.133/$post").build()
-
-
-                 client.newCall(request).execute()
-                val slovo = "dsfsdf"
-
-
-
-            //Создаем переменную которая будет отправлять данные в esp
-
-            } catch (i: IOException) {
-            }
-        }.start() //Старт второстепенного потока
-
-    }
-
-}
-
-//    private val counter = mutableListOf(1, 2, 3)
-//    override fun getCounter(index: Int): Int {
-//        return counter[index]
-//    }
-//    override fun upCounter(index: Int): Int {
-//        counter[index]++
-//        return getCounter(index)
-//    }
-
-
-
-
-//    fun set(index: Int, value: Int) {
-//        counter[index] = value
-//    }
-

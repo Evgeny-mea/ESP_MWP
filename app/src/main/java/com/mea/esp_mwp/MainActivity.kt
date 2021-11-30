@@ -14,7 +14,6 @@ class MainActivity : AppCompatActivity(), MainView {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
-
         val listener = View.OnClickListener {
             presenter.counterClick(it.id)
         }
@@ -26,17 +25,11 @@ class MainActivity : AppCompatActivity(), MainView {
 
 
     override fun outData(textViewId: Int, text: String) {
-
 //        binding?.root?.findViewById<TextView>(textViewId)?.text=text
-
         val textView = when (textViewId) {
             R.id.textView -> binding?.textView
-
             else -> null
         } ?: return
         textView.text = text
-
     }
-
-
 }

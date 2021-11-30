@@ -18,9 +18,9 @@ class MainPresenter(
 //            view.outData (R.id.textView, nextValue.toString())
         }
         R.id.btn_led_3 -> {
-            model.gPost("led3")
-//            val nextValue = model.upCounter(2)
-//            view.outData (R.id.textView, nextValue.toString())
+            model.gPost("temperature")
+            val nextValue = model.temperature
+            view.outData (R.id.textView, nextValue)
         }
         else -> {}
     }
